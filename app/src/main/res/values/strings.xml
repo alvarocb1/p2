@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">P2</string>
+    <string name="flores">Flores</string>
+    <string name="clientes">Clientes</string>
+    <string name="encomendas">Encomendas</string>
+    <string name="sair">Sair</string>
+    <string name="listar">listar</string>
+    <string name="cadastrar">cadastrar</string>
 </resources>
