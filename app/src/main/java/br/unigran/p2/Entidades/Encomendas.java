@@ -2,6 +2,7 @@ package br.unigran.p2.Entidades;
 
 public class Encomendas {
     private int id;
+    private int quantidade;
     private float valor;
 
     public int getId() {
@@ -10,6 +11,14 @@ public class Encomendas {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public float getValor() {
@@ -24,6 +33,7 @@ public class Encomendas {
     public String toString() {
         return "Encomendas{" +
                 "id=" + id +
+                ", quantidade=" + quantidade +
                 ", valor=" + valor +
                 '}';
     }

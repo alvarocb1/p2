@@ -6,4 +6,18 @@
     <string name="sair">Sair</string>
     <string name="listar">listar</string>
     <string name="cadastrar">cadastrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="informe_a_rua_do_cliente">Informe a rua do Cliente</string>
+    <string name="informe_o_uf_do_cliente">Informe o UF do Cliente</string>
+    <string name="informe_a_cidade_do_cliente">Informe a cidade do Cliente</string>
+    <string name="informe_o_numero_de_residencia_do_cliente">Informe o numero de residencia do Cliente</string>
+    <string name="salvar">Salvar</string>
+    <string name="informe_o_nome_do_cliente">Informe o nome do Cliente</string>
+    <string name="infrome_qual_o_tipo_de_flor">Informe qual o tipo de Flor</string>
+    <string name="infome_o_valor_da_encomenda">Infome o valor da encomenda</string>
+    <string name="informe_a_quantidade">Informe a quantidade</string>
+    <string name="informe_qual_tipo_de_flor_desejada">Informe qual tipo de Flor desejada</string>
+    <string name="informe_qual_cliente_est_fazendo_encomenda">Informe qual cliente está fazendo encomenda</string>
+    <string name="editar">Editar</string>
 </resources>
