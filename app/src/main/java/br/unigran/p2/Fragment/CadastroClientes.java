@@ -7,7 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import br.unigran.p2.Entidades.Clientes;
+import br.unigran.p2.Entidades.Flores;
 import br.unigran.p2.R;
 
 /**
@@ -25,6 +33,14 @@ public class CadastroClientes extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button btn;
+    EditText nome;
+    EditText uf;
+    EditText cidade;
+    EditText rua;
+    EditText numero;
+    DatabaseReference databaseReference;
 
     public CadastroClientes() {
         // Required empty public constructor
@@ -61,6 +77,36 @@ public class CadastroClientes extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_clientes, container, false);
+        View view= inflater.inflate(R.layout.fragment_cadastro_clientes, container, false);
+        btn=view.findViewById(R.id.idSalvarCliente);
+        nome= view.findViewById(R.id.idNomeCliente);
+        uf= view.findViewById(R.id.idUfCliente);
+        cidade= view.findViewById(R.id.idCidadeCliente);
+        rua= view.findViewById(R.id.idRuaCliente);
+        numero= view.findViewById(R.id.idNumeroCliente);
+
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvar();
+            }
+        });
+
+        return view;
+    }
+
+    private void salvar() {
+        Clientes c = new Clientes();
+        c.nome=nome.getText().toString();
+        c.uf=uf.getText().toString();
+        c.cidade=cidade.getText().toString();
+        c.rua=rua.getText().toString();
+        c.numero=numero.getText().toString();
+
+        DatabaseReference flores = databaseReference.child("clientes");
+        flores.push().setValue(c);
+        Toast.makeText(getContext(),"Salvo",Toast.LENGTH_SHORT).show();
     }
 }

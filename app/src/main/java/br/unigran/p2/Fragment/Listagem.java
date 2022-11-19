@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import br.unigran.p2.R;
 
@@ -21,13 +26,23 @@ public class Listagem extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private List dados ;
+    ListView listView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ArrayAdapter adapter;
 
     public Listagem() {
         // Required empty public constructor
+        dados = new LinkedList();
+    }
+    public List getDados(){
+        return dados;
+    }
+    public void atualizaAdapter(){
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -61,6 +76,12 @@ public class Listagem extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listagem, container, false);
+        View view = inflater.inflate(R.layout.fragment_listagem, container, false);
+        listView=view.findViewById(R.id.idLista);
+        adapter= new ArrayAdapter(   getActivity(),
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                dados);
+        listView.setAdapter(adapter);
+        return  view;
     }
 }

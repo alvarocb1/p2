@@ -1,13 +1,26 @@
 package br.unigran.p2.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import br.unigran.p2.Entidades.Flores;
 import br.unigran.p2.R;
 
 /**
@@ -25,6 +38,10 @@ public class CadastroFlores extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button btn;
+    EditText tipo;
+    DatabaseReference databaseReference;
+
 
     public CadastroFlores() {
         // Required empty public constructor
@@ -61,6 +78,30 @@ public class CadastroFlores extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_flores, container, false);
+
+        View view= inflater.inflate(R.layout.fragment_cadastro_flores, container, false);
+        btn=view.findViewById(R.id.idSalvarFlores);
+        tipo= view.findViewById(R.id.idTipoFlores);
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvar();
+            }
+        });
+
+        return view;
     }
+
+    private void salvar() {
+        Flores flor = new Flores();
+        flor.tipo=tipo.getText().toString();
+
+        DatabaseReference flores = databaseReference.child("flores");
+        flores.push().setValue(flor);
+        Toast.makeText(getContext(),"Salvo",Toast.LENGTH_SHORT).show();
+    }
+
+
 }

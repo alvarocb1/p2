@@ -2,11 +2,11 @@ package br.unigran.p2.Entidades;
 
 public class Clientes {
     private int id;
-    private String nome;
-    private String uf;
-    private String cidade;
-    private String rua;
-    private String numero;
+    public String nome;
+    public String uf;
+    public String cidade;
+    public String rua;
+    public String numero;
 
     public int getId() {
         return id;

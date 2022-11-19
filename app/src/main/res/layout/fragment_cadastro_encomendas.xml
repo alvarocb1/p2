@@ -57,7 +57,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/idQuantidadeFlores"
+        android:id="@+id/idQuantidadeEncomenda"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -74,7 +74,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/idValor"
+        android:id="@+id/idValorEncomenda"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -87,7 +87,7 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idQuantidadeFlores"
+        app:layout_constraintTop_toBottomOf="@+id/idQuantidadeEncomenda"
         android:autofillHints="" />
 
     <Button
@@ -100,5 +100,5 @@
         android:text="@string/salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idValor" />
+        app:layout_constraintTop_toBottomOf="@+id/idValorEncomenda" />
 </androidx.constraintlayout.widget.ConstraintLayout>

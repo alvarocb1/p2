@@ -2,7 +2,7 @@ package br.unigran.p2.Entidades;
 
 public class Flores {
     private int id;
-    private String tipo;
+    public String tipo;
 
     public int getId() {
         return id;
