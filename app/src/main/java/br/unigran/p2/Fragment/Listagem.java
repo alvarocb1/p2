@@ -113,8 +113,8 @@ public class Listagem extends Fragment {
                 for (DataSnapshot item : snapshot.getChildren()){
                     Encomendas encomendas = item.getValue(Encomendas.class);
                     listagem.add(encomendas);
-                    Log.i("Firebase",encomendas.nomeCliente);
-                    Log.i("Firebase",encomendas.tipoFlor);
+                    Log.i("Firebase", String.valueOf(encomendas.quantidade));
+                    Log.i("Firebase", String.valueOf(encomendas.valor));
                 }
             }
 

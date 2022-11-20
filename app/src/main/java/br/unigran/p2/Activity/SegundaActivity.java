@@ -8,14 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,13 +39,16 @@ import br.unigran.p2.R;
 public class SegundaActivity extends AppCompatActivity {
     Fragment fragmento;
     RecyclerView recyclerView;
-    Listagem listagem;
 
-    ClientesAdapter clientesAdapter;
     FloresAdapter floresAdapter;
+    ClientesAdapter clientesAdapter;
     EncomendasAdapter encomendasAdapter;
+    Listagem listagem;
+    List dados;
+    FirebaseDatabase db;
     private String acao;
-    LinearLayoutManager linearLayoutManager;
+    DatabaseReference databaseReference;
+
 
 
 
@@ -50,6 +58,7 @@ public class SegundaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
 
+        dados = new LinkedList();
         getSupportActionBar().setElevation(0);
         listagem=new Listagem();
         acao=getIntent().getStringExtra("fragmento");
@@ -89,13 +98,61 @@ public class SegundaActivity extends AppCompatActivity {
                 .commit();//valida a adição
         switch (acao){
             case "Flores":
-                
+                dados = new ArrayList<>();
+                databaseReference.child("flores").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot flor : snapshot.getChildren()){
+                            Flores flores = flor.getValue(Flores.class);
+                            dados.add(flores);
+                        }
+                        floresAdapter = new FloresAdapter(dados);
+                        recyclerView.setAdapter(floresAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 break;
             case "Clientes":
+                dados = new ArrayList<>();
+                databaseReference.child("clientes").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot cliente : snapshot.getChildren()){
+                            Clientes clientes = cliente.getValue(Clientes.class);
+                            dados.add(clientes);
+                        }
+                        clientesAdapter = new ClientesAdapter(dados);
+                        recyclerView.setAdapter(clientesAdapter);
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 break;
             case "Encomendas":
+                dados = new ArrayList<>();
+                databaseReference.child("encomendas").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot encomenda : snapshot.getChildren()){
+                            Encomendas encomendas = encomenda.getValue(Encomendas.class);
+                            dados.add(encomendas);
+                        }
+                        encomendasAdapter = new EncomendasAdapter(dados);
+                        recyclerView.setAdapter(encomendasAdapter);
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 break;
 
         }

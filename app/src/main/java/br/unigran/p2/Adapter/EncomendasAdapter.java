@@ -21,6 +21,10 @@ public class EncomendasAdapter extends RecyclerView.Adapter<EncomendasAdapter.En
     public EncomendasAdapter(Context context, List<Encomendas> dados) {
         this.dados = dados;
     }
+
+    public EncomendasAdapter(List dados) {
+    }
+
     @NonNull
     @Override
     public EncomendasHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

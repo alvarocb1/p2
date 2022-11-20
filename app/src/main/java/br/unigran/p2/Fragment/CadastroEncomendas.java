@@ -134,8 +134,6 @@ public class CadastroEncomendas extends Fragment {
         Encomendas e = new Encomendas();
         e.valor= Float.parseFloat(valor.getText().toString());
         e.quantidade= Integer.parseInt(quantidade.getText().toString());
-        e.nomeCliente=user.getSelectedItem().toString();
-        e.tipoFlor=product.getSelectedItem().toString();
         DatabaseReference encomendas = databaseReference.child("encomendas");
         encomendas.push().setValue(e);
         Toast.makeText(getContext(),"Salvo",Toast.LENGTH_SHORT).show();
