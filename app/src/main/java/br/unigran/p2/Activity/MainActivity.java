@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.idClientes:
                 startActivity(new Intent(this,SegundaActivity.class).
-                        putExtra("fragmento", "Cliente"));
+                        putExtra("fragmento", "Clientes"));
                 break;
             case R.id.idEncomendas:
                 startActivity(new Intent(this,SegundaActivity.class).

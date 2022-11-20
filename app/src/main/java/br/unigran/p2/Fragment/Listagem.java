@@ -27,7 +27,7 @@ public class Listagem extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private List dados ;
-    ListView listView;
+    ListView recycleView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -77,11 +77,11 @@ public class Listagem extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_listagem, container, false);
-        listView=view.findViewById(R.id.idLista);
+        recycleView =view.findViewById(R.id.idLista);
         adapter= new ArrayAdapter(   getActivity(),
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                 dados);
-        listView.setAdapter(adapter);
+        recycleView.setAdapter(adapter);
         return  view;
     }
 }
