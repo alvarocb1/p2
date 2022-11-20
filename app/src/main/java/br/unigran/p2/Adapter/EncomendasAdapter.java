@@ -1,5 +1,6 @@
 package br.unigran.p2.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import br.unigran.p2.R;
 public class EncomendasAdapter extends RecyclerView.Adapter<EncomendasAdapter.EncomendasHolder>{
     List<Encomendas> dados;
 
-    public EncomendasAdapter(List<Encomendas> dados) {
+    public EncomendasAdapter(Context context, List<Encomendas> dados) {
         this.dados = dados;
     }
     @NonNull

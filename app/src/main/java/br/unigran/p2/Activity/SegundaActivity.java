@@ -89,22 +89,13 @@ public class SegundaActivity extends AppCompatActivity {
                 .commit();//valida a adição
         switch (acao){
             case "Flores":
-                recyclerView = findViewById(R.id.idLista);
-                //setar layout no recycleView
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.setAdapter(floresAdapter);
+                
                 break;
             case "Clientes":
-                recyclerView = findViewById(R.id.idLista);
-                //setar layout no recycleView
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.setAdapter(clientesAdapter);
+
                 break;
             case "Encomendas":
-                recyclerView = findViewById(R.id.idLista);
-                //setar layout no recycleView
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.setAdapter(encomendasAdapter);
+
                 break;
 
         }
