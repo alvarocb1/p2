@@ -140,4 +140,8 @@ public class CadastroEncomendas extends Fragment {
         encomendas.push().setValue(e);
         Toast.makeText(getContext(),"Salvo",Toast.LENGTH_SHORT).show();
     }
+
+    public void ler(){
+        DatabaseReference encomendas = databaseReference.child("encomendas");
+    }
 }
